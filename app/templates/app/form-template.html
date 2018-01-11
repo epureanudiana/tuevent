@@ -1,0 +1,12 @@
+{% load static %}
+{% for field in form %}
+<link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <span class="text-danger small"> {{ field.errors }}</span>
+  </div>
+  <label class="control-label col-sm-2"> {{field.label_tag}}</label>
+  <div class="col-sm-10">{{field}}</div>
+</div>
+{% endfor %}

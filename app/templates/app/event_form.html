@@ -1,0 +1,98 @@
+{% load static %}
+<html>
+
+     <head>
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, links, icons" />
+
+        <title>Create event</title>
+        <link href="{% static 'app/leisure.css' %}" rel = "stylesheet" type = "text/css">
+        <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+    </head>
+    <body>
+               <header>
+        <nav>
+            <div class="logo-section">
+                <button class="hb-button"><i class="fa fa-bars"></i></button>
+            </div>
+            <ul>
+
+
+                 <li><a href="{% url 'app:index' %}">HOME</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+        <div class="jumbotron leisure_bkg">
+            <div class="container">
+                    <h1 class="display-3 text-center titlecolor">Create your own event!</h1>
+                  <div style="text-align:center;">
+                      <a href="{% url 'app:event-add'%}"><button class="btn btn-dark btn-lg addevent">Add event </button></a>
+                  </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12 col-md-7">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-group" action="" method="post">
+                      {% csrf_token %}
+                      {% include 'app/form-template.html' %}
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Events</a>
+					·
+					<a href="#">Share</a>
+					·
+                    <a href="#">Contact</a>
+				</p>
+
+				<p>TU/event &copy; 2017</p>
+			</div>
+
+		</footer>
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'app/javascript/leisure.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,169 @@
+{% load static %}
+<html>
+
+     <head>
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, links, icons" />
+
+        <title>Personal</title>
+        <link href="{% static 'app/personal.css' %}" rel = "stylesheet" type = "text/css">
+        <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+    </head>
+    <body>
+               <header>
+        <nav>
+            <div class="logo-section">
+                <button class="hb-button"><i class="fa fa-bars"></i></button>
+            </div>
+            <ul>
+               <li><a href="{% url 'app:index' %}">HOME</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+        <div class="jumbotron leisure_bkg">
+            <div class="container">
+                    <h1 class="display-3 text-center titlecolor">Personal events</h1>
+            </div>
+        </div>
+
+        <section class="cards">
+            <div class="container">
+                <div class="row row-margin">
+                    <!-- first row, first card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Jolie's birthday party</h4>
+                                <p class="card-text">Date: 20 Aug 2018</p>
+                                <p class="card-text">Location: Beukenlaan 87-87</p>
+                             <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- first row, second card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Houseparty</h4>
+                                <p class="card-text">Date: 12 May 2018</p>
+                                 <p class="card-text">Location: Kruistraat 12 VC</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- first row, third card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Pool party</h4>
+                                <p class="card-text">Date: 28 July 2018</p>
+                                <p class="card-text">Location: Lake, nearby TU/e campus</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--SECOND ROW-->
+                <div class="row row-margin">
+                    <!-- second row, first card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+                      
+                            <div class="card-body">
+                                <h4 class="card-title">John's name day</h4>
+                                <p class="card-text">Date: 25 March 2018</p>
+                                <p class="card-text">Location: Pastoorstraat 56-55 BF</p>
+                                 <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Events</a>
+					·
+					<a href="#">Share</a>
+					·
+                    <a href="#">Contact</a>
+				</p>
+
+				<p>TU/event &copy; 2017</p>
+			</div>
+
+		</footer>
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'app/javascript/personal.js' %}"></script>
+    </body>
+</html>

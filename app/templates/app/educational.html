@@ -1,0 +1,213 @@
+{% load static %}
+<html>
+
+     <head>
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, links, icons" />
+
+        <title>Educational</title>
+        <link href="{% static 'app/educational.css' %}" rel = "stylesheet" type = "text/css">
+        <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+    </head>
+    <body>
+               <header>
+        <nav>
+            <div class="logo-section">
+                <button class="hb-button"><i class="fa fa-bars"></i></button>
+            </div>
+            <ul>
+               <li><a href="{% url 'app:index' %}">HOME</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+        <div class="jumbotron leisure_bkg">
+            <div class="container">
+                    <h1 class="display-3 text-center titlecolor">Educational events</h1>
+            </div>
+        </div>
+
+        <section class="cards">
+            <div class="container">
+                <div class="row row-margin">
+                    <!-- first row, first card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Photoshop Training Introduction</h4>
+                                <p class="card-text">Date: 21 Sept 2018, 12:30</p>
+                                <p class="card-text">Location: Auditorium 9</p>
+                             <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- first row, second card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">AI Seminar</h4>
+                                <p class="card-text">Date: 20 Sept 2018, 12:30</p>
+                                <p class="card-text">Location: Auditorium 11</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- first row, third card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">GEWIS lunch meeting</h4>
+                               <p class="card-text">Date: 19 Sept 2018, 12:30</p>
+                                <p class="card-text">Location: MF 3.100</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--SECOND ROW-->
+                <div class="row row-margin">
+                    <!-- second row, first card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Seminar: Linear Algebra</h4>
+                                <p class="card-text">Date: 21 Oct 2018, 16:30</p>
+                                <p class="card-text">Location: Auditorium 16</p>
+                                 <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- second row, second card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Prof P.F. Dole lecture on CG</h4>
+                               <p class="card-text">Date: 1 Nov 2018, 10:00</p>
+                                <p class="card-text">Location: Vertigo 1.56</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- second row, third card-->
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+                            
+                            <div class="card-body">
+                                <h4 class="card-title">Seminar on Statistics</h4>
+                                <p class="card-text">Date: 16 May 2018, 12:30</p>
+                                <p class="card-text">Location: Auditorium 9</p>
+                                  <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Events</a>
+					·
+					<a href="#">Share</a>
+					·
+                    <a href="#">Contact</a>
+				</p>
+
+				<p>TU/event &copy; 2017</p>
+			</div>
+
+		</footer>
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'app/javascript/educational.js' %}"></script>
+    </body>
+</html>

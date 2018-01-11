@@ -1,0 +1,114 @@
+{% load static %}
+<html>
+
+     <head>
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, links, icons" />
+
+        <title>Leisure</title>
+        <link href="{% static 'app/leisure.css' %}" rel = "stylesheet" type = "text/css">
+        <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+    </head>
+    <body>
+               <header>
+        <nav>
+            <div class="logo-section">
+                <button class="hb-button"><i class="fa fa-bars"></i></button>
+            </div>
+            <ul>
+
+
+                 <li><a href="{% url 'app:index' %}">HOME</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+        <div class="jumbotron leisure_bkg">
+            <div class="container">
+                    <h1 class="display-3 text-center titlecolor">Leisure events</h1>
+                  <div style="text-align:center;">
+                      <a href="{% url 'app:event-add'%}"><button class="btn btn-dark btn-lg addevent">Add event </button></a>
+                  </div>
+            </div>
+        </div>
+
+        <section class="cards">
+            <div class="container">
+                <div class="row row-margin">
+                    <!-- first row, first card-->
+                    {% if latest_event_list %}
+                    {% for event in latest_event_list %}
+                    <div class="col-md-4">
+                        <div class="card card2" style="width: 20rem;">
+                            <!--<img class="card-img-top" src="img/leisure/lei1.jpg" alt="Card image cap">-->
+                            <div class="card-body">
+                                <h4 class="card-title">{{event.event_name}}</h4>
+                                <p class="card-text">Publisher: {{event.published_by}} </p>
+                                <p class="card-text">Date: {{event.event_date}}</p>
+                                <p class="card-text">Location: {{event.event_location}}</p>
+                                <p class="card-text">{{event.event_description}}</p>
+                             <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-danger  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                 </label>
+                                 <label class="btn btn-success btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                </label>
+                                <label class="btn btn-warning btn-sm">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>No events are available </p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Events</a>
+					·
+					<a href="#">Share</a>
+					·
+                    <a href="#">Contact</a>
+				</p>
+
+				<p>TU/event &copy; 2017</p>
+			</div>
+
+		</footer>
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'app/javascript/leisure.js' %}"></script>
+    </body>
+</html>
