@@ -19,3 +19,8 @@ class Event(models.Model):
         return self.event_name
     def get_absolute_url(self):
         return reverse('app:leisure')
+
+class ContactMessage(models.Model):
+    sender_name = models.CharField(max_length=200)
+    sender_email = models.CharField(max_length=200)
+    content = models.CharField(max_length=1000)

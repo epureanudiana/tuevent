@@ -9,5 +9,6 @@ urlpatterns = [
     path('professional', views.professional, name='professional'),
     path('personal', views.personal, name='personal'),
     path('myprofile', views.myprofile, name='myprofile'),
-    path('create', views.EventCreate.as_view(), name='event-add')
+    path('create', views.EventCreate.as_view(), name='event-add'),
+    path('contact', views.contact, name='contact')
 ]
