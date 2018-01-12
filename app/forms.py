@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #forms.py
 import re
 from django import forms
@@ -23,3 +24,14 @@ class RegistrationForm(forms.Form):
             if self.cleaned_data['password1'] != self.cleaned_data['password2']:
                 raise forms.ValidationError(_("The two password fields did not match."))
         return self.cleaned_data
+=======
+from django import forms
+
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea
+    )
+>>>>>>> 1584f1b8b9d1cb624f187ac6ae32882a8c0a83a3
