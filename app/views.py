@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView
-<<<<<<< HEAD
 
 from app.forms import *
 from django.contrib.auth.decorators import login_required
@@ -15,7 +14,6 @@ from django.shortcuts import render, get_object_or_404
 
 from django.db.models import F
 from django.conf import settings
-=======
 from .forms import ContactForm
 
 # Imports for the Contact page
@@ -24,7 +22,6 @@ from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
 
->>>>>>> 1584f1b8b9d1cb624f187ac6ae32882a8c0a83a3
 # Create your views here.
 from .models import Event, ContactMessage
 

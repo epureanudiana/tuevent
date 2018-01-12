@@ -11,7 +11,6 @@ urlpatterns = [
     path('personal', views.personal, name='personal'),
     path('myprofile', views.myprofile, name='myprofile'),
     path('create', views.EventCreate.as_view(), name='event-add'),
-<<<<<<< HEAD
     path('welcome', views.welcome, name='welcome'),
     path('register', views.register, name='register'),
     path('register/success', views.register_success, name='register_success'),
@@ -26,7 +25,5 @@ urlpatterns = [
     #url(r'^logout/$', logout_page, name='logout_page'),
     #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
-=======
     path('contact', views.contact, name='contact')
->>>>>>> 1584f1b8b9d1cb624f187ac6ae32882a8c0a83a3
 ]
