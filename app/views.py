@@ -29,18 +29,40 @@ def index(request):
     return render(request, 'app/index.html')
 
 def leisure(request):
-    latest_event_list = Event.objects.order_by('-event_date')[:50]
-    context = {'latest_event_list': latest_event_list}
-    return render(request, 'app/leisure.html', context)
-
-def educational(request):
-    return render(request, 'app/educational.html')
-
-def professional(request):
-    return render(request, 'app/professional.html')
+    latest_event_list = Event.objects.filter(event_category='le')
+    latest_event_list = latest_event_list.order_by('-event_date')[:50]
+    context = {'latest_event_list': latest_event_list,
+        'category': 'Leisure',
+        'css': 'app/leisure.css',
+        'js': 'app/javascript/leisure.js'}
+    return render(request, 'app/events-base.html', context)
 
 def personal(request):
-    return render(request, 'app/personal.html')
+    latest_event_list = Event.objects.filter(event_category='pe')
+    latest_event_list = latest_event_list.order_by('-event_date')[:50]
+    context = {'latest_event_list': latest_event_list,
+        'category': 'Personal',
+        'css': 'app/personal.css',
+        'js': 'app/javascript/personal.js'}
+    return render(request, 'app/events-base.html', context)
+
+def educational(request):
+    latest_event_list = Event.objects.filter(event_category='ed')
+    latest_event_list = latest_event_list.order_by('-event_date')[:50]
+    context = {'latest_event_list': latest_event_list,
+        'category': 'Educational',
+        'css': 'app/educational.css',
+        'js': 'app/javascript/educational.js'}
+    return render(request, 'app/events-base.html', context)
+
+def professional(request):
+    latest_event_list = Event.objects.filter(event_category='pr')
+    latest_event_list = latest_event_list.order_by('-event_date')[:50]
+    context = {'latest_event_list': latest_event_list,
+        'category': 'Professional',
+        'css': 'app/professional.css',
+        'js': 'app/javascript/professional.js'}
+    return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
     return render(request, 'app/myprofile.html')
@@ -71,7 +93,7 @@ def contact(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description']
+    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description', 'event_category']
 
 
 
