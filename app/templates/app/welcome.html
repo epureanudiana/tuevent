@@ -1,0 +1,277 @@
+<!-- home.html -->
+<!--
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Welcome to Django{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css '%}"
+{% endblock %}
+{% block content %}
+    <h1> Hello {{ user.username }} </h1>
+    <button type="button" onclick="window.location.href='/logout/' ">Logout</button>
+{% endblock %}
+-->
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="footer, links, icons" />
+
+        <title>Tu/event</title>
+        <link href="{% static 'app/style.css' %}" rel = "stylesheet" type = "text/css">
+        <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
+        <link href="{% static 'app/jquery.datetimepicker.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'app/daterangepicker.css' %}" />
+
+
+    </head>
+
+    <body>
+            <header id="home">
+               <header>
+        <nav>
+            <div class="logo-section">
+                <button class="hb-button"><i class="fa fa-bars"></i></button>
+            </div>
+            <ul>
+                <li><a class="slide-section" href="#contact">CONTACT</a></li>
+                <li><a class="slide-section" href="#share">SHARE</a></li>
+                 <li><a class="slide-section" href="#events">EVENTS</a></li>
+                 <li><a class="slide-section" href="#about">ABOUT</a></li>
+                 <li><a class="slide-section" href="#home">HOME</a></li>
+                <li><a href="{% url 'app:myprofile' %}">MY PROFILE</a></li>
+
+            </ul>
+        </nav>
+    </header>
+                <div class="home" >
+                    <h1 class="greet">WELCOME TO TU/EVENT</h1>
+                    <h2 class="greet">YOUR PORTAL TO THE CAMPUS LIFE</h2>
+                </div>
+           </header>
+
+        <section class="about move" id="about">
+            <h3 class="text-center">ABOUT</h3>
+            <p class="text">TU/event is a social platform designed to bring together the community of students, teachers and companies from Eindhoven and beyond. Here you can find everything you want to know about what is going on in TU/e campus, from birthday parties and dance courses to ways to develop your hard skills or even get hired. There is no longer need to surf numerous pages in order to find when, where, what is currently happening around you and, more than this, you personally can create events on this page which will be shared with the community! So join TU/event and start having fun! </p>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><b>STEP 1:</b> In case you have not done it already, register to our website and configure your TU/event account so that you can be an active member of the community!
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><b>STEP 2:</b> Start searching for your friends, discover new people, make new friends and create your social network whom you are going to interact with!
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><b>STEP 3:</b> Go ahead and explore the website, attend events, create new ones and develop yourself personally and professionally starting from today!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="events move" id="events">
+            <h3 class="text-center">EVENTS</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                        <div id="lei" class="card card2" style="width: 15rem;">
+  <img class="card-img-top" src="{% static 'app/img/leisure.jpg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Leisure</h4>
+    <p class="card-text">Sports? Music?<br> Dancing lessons?<br>You can find here any relaxing activity for you and your friends.</p>
+  </div>
+  <div class="card-body">
+    <a href="{% url 'app:leisure' %}" class="card-link bigger"><b>See events</b></a>
+  </div>
+</div>
+                    </div>
+                    <div class=" col col-md-3 col-lg-3 col-sm-12">
+                        <div id="per" class="card card2" style="width: 15rem;">
+  <img class="card-img-top" src="{% static 'app/img/personal.jpg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Personal</h4>
+    <p class="card-text">Here there are some more private events, such as house parties or movie nights, so check them out and join what you want.</p>
+  </div>
+  <div class="card-body">
+    <a href="{% url 'app:personal' %}" class="card-link bigger"><b>See events</b></a>
+  </div>
+</div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div id="ed" class="card card2" style="width: 15rem;">
+  <img class="card-img-top" src="{% static 'app/img/educational.jpg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Educational</h4>
+    <p class="card-text">Lunch lectures, trainings, seminars, any university-related event where you can consolidate your knowledge. </p>
+  </div>
+  <div class="card-body">
+    <a href="{% url 'app:educational' %}" class="card-link bigger"><b>See events</b></a>
+  </div>
+</div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div id="prf" class="card card2" style="width: 15rem;">
+  <img class="card-img-top" src="{% static 'app/img/professional.jpg' %}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Professional</h4>
+    <p class="card-text">This is great for those in search for internships, summer schools, jobs. Offers of these kinds will be posted in this section.</p>
+  </div>
+  <div class="card-body">
+    <a href="{% url 'app:professional' %}" class="card-link bigger"><b>See events</b></a>
+  </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="share move" id="share">
+            <h3 class="text-center">SHARE YOUR EVENT</h3>
+            <div class="container">
+                <p class="text-center" style="color:white;">Do you have an event that you would like to share with your friends? Go ahead and post it here! </p>
+            <form>
+  <div class="row">
+      <div class="col-md-3">
+      </div>
+    <div class="col-md-3 mb-3">
+      <label class="fcolor" for="validationServer01">First name</label>
+      <input type="text" class="form-control" id="validationServer01" placeholder="First name"  required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label class="fcolor" for="validationServer02">Last name</label>
+      <input type="text" class="form-control" id="validationServer02" placeholder="Last name" required>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <label class="mr-sm-2 fcolor" for="inlineFormCustomSelectPref">Category</label>
+  <select class=" form-control custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref" required >
+    <option id="choose" selected>Choose...</option>
+    <option value="1">Leisure</option>
+    <option value="2">Personal</option>
+    <option value="3">Educational</option>
+    <option value="3">Professional</option>
+  </select>
+        </div>
+        <div class="col-md-3 mb-3">
+      <div class="form-group">
+        <label class= "fcolor " for="formPeriod">Date</label>
+         <input id="datetimepicker" type="text" name="daterange" class="form-control" placeholder="Date" required />
+      </div>
+    </div>
+    </div>
+  <div class="row">
+      <div class="col-md-3">
+      </div>
+    <div class="col-md-6 mb-6">
+      <label class="fcolor"
+             for="validationServer04">Location</label>
+      <input type="text" class="form-control" id="validationServer04" placeholder="Location" required>
+    </div>
+  </div>
+   <div class="row">
+       <div class="col-md-3">
+       </div>
+        <div class="col-md-6 mb-3">
+      <div class="form-group">
+  <label id="somespace" class="fcolor" for="description">Short Description</label>
+  <textarea class="form-control" rows="4" id="description" placeholder="Write a description..."></textarea>
+</div>
+    </div>
+    </div>
+  <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6 text-center">
+  <button class="btn btn-dark btn-lg" type="submit">Share</button>
+          </div>
+      </div>
+</form>
+</div>
+        </section>
+
+        <section class="contact move" id="contact">
+            <h3 class="text-center">CONTACT US</h3>
+            <p class="text text-center">TU/event it a website under development and there is still a lot of room for improvement.<br> If you have any questions or recommendations for us, do not hesitate to leave a message. We will answer you in no time.</p>
+        <form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 mb-4">
+      <label for="validationServer02">Your Name</label>
+      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="First name" required>
+    </div>
+                </div>
+            <div class="row">
+             <div class="col-md-4"></div>
+              <div class="col-md-4 mb-4 form-group">
+    <label for="exampleInputEmail1">Your Email address</label>
+    <input type="email" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+  <label for="description">Your Message</label>
+  <textarea class="form-control is-valid" rows="4" id="description" placeholder="Leave a message..."></textarea>
+</div>
+                    </div>
+
+                </div>
+                <div class="centered">
+                        <button class="btn btn-dark btn-lg" type="submit">Send</button>
+               </div>
+
+            </div>
+        </form>
+
+
+        </section>
+        <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Events</a>
+					·
+					<a href="#">Share</a>
+					·
+                    <a href="#">Contact</a>
+				</p>
+
+				<p>TU/event &copy; 2017</p>
+			</div>
+
+		</footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'app/javascript/jquery.datetimepicker.full.js' %}"></script>
+         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+        <script>
+            $("#datetimepicker").datetimepicker();
+        </script>
+        <script src="{% static 'app/javascript/index.js' %}"></script>
+    </body>
+
+</html>
