@@ -108,7 +108,12 @@ def share(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description']
+    fields = ['event_name', 'event_location', 'event_date', 'event_description', 'event_category']
+
+    def form_valid(self, form):
+         user = self.request.user
+         form.instance.published_by = user
+         return super(EventCreate, self).form_valid(form)
 
 class EventShare(CreateView):
     #what type of object are you trying to create?
