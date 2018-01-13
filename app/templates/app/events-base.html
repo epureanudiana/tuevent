@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="footer, links, icons" />
 
-        <title>Leisure</title>
-        <link href="{% static 'app/leisure.css' %}" rel = "stylesheet" type = "text/css">
+        <title>{{ category }} events</title>
+        <link href="{% static css %}" rel = "stylesheet" type = "text/css">
         <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
@@ -32,7 +32,7 @@
 
         <div class="jumbotron leisure_bkg">
             <div class="container">
-                    <h1 class="display-3 text-center titlecolor">Leisure events</h1>
+                    <h1 class="display-3 text-center titlecolor">{{ category }} events</h1>
                   <div style="text-align:center;">
                       <a href="{% url 'app:event-add'%}"><button class="btn btn-dark btn-lg addevent">Add event </button></a>
                   </div>
@@ -109,6 +109,6 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
          <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
          <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
-        <script src="{% static 'app/javascript/leisure.js' %}"></script>
+        <script src="{% static js %}"></script>
     </body>
 </html>
