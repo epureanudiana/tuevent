@@ -7,6 +7,19 @@
 body {
     font-family: sans-serif;
 }
+
+.card-photo .photo-active {
+   background-size: 30.8em 16.5em;
+   transition: 0.2s; }
+
+.card-active {
+
+  background-color: 1e325f ;
+  color: f8f9fa;
+
+  border: 3px solid rgba(0, 0, 0, 0.125);
+ }
+
 .centered {
     text-align: center;
 }
