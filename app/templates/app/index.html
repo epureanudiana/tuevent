@@ -25,7 +25,7 @@
             </div>
             <ul>
                 <li><a class="slide-section" href="{% url 'app:contact' %}">CONTACT</a></li>
-                <li><a class="slide-section" href="#share">SHARE</a></li>
+                <li><a class="slide-section" href="{% url 'app:share' %}">SHARE</a></li>
                  <li><a class="slide-section" href="#events">EVENTS</a></li>
                  <li><a class="slide-section" href="#about">ABOUT</a></li>
                  <li><a class="slide-section" href="#home">HOME</a></li>
@@ -116,71 +116,7 @@
                 </div>
             </div>
         </section>
-        <section class="share move" id="share">
-            <h3 class="text-center">SHARE YOUR EVENT</h3>
-            <div class="container">
-                <p class="text-center" style="color:white;">Do you have an event that you would like to share with your friends? Go ahead and post it here! </p>
-            <form>
-  <div class="row">
-      <div class="col-md-3">
-      </div>
-    <div class="col-md-3 mb-3">
-      <label class="fcolor" for="validationServer01">First name</label>
-      <input type="text" class="form-control" id="validationServer01" placeholder="First name"  required>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label class="fcolor" for="validationServer02">Last name</label>
-      <input type="text" class="form-control" id="validationServer02" placeholder="Last name" required>
-    </div>
-  </div>
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <label class="mr-sm-2 fcolor" for="inlineFormCustomSelectPref">Category</label>
-  <select class=" form-control custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref" required >
-    <option id="choose" selected>Choose...</option>
-    <option value="1">Leisure</option>
-    <option value="2">Personal</option>
-    <option value="3">Educational</option>
-    <option value="3">Professional</option>
-  </select>
-        </div>
-        <div class="col-md-3 mb-3">
-      <div class="form-group">
-        <label class= "fcolor " for="formPeriod">Date</label>
-         <input id="datetimepicker" type="text" name="daterange" class="form-control" placeholder="Date" required />
-      </div>
-    </div>
-    </div>
-  <div class="row">
-      <div class="col-md-3">
-      </div>
-    <div class="col-md-6 mb-6">
-      <label class="fcolor"
-             for="validationServer04">Location</label>
-      <input type="text" class="form-control" id="validationServer04" placeholder="Location" required>
-    </div>
-  </div>
-   <div class="row">
-       <div class="col-md-3">
-       </div>
-        <div class="col-md-6 mb-3">
-      <div class="form-group">
-  <label id="somespace" class="fcolor" for="description">Short Description</label>
-  <textarea class="form-control" rows="4" id="description" placeholder="Write a description..."></textarea>
-</div>
-    </div>
-    </div>
-  <div class="row">
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-6 text-center">
-  <button class="btn btn-dark btn-lg" type="submit">Share</button>
-          </div>
-      </div>
-</form>
-</div>
+      
 
         <footer class="footer-distributed">
 

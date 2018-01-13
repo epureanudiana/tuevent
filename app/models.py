@@ -28,6 +28,7 @@ class Event(models.Model):
     def __str__(self):
         return self.event_name
     def get_absolute_url(self):
+        # where the user is redirected after adding a new event
         return reverse('app:leisure')
 
 class ContactMessage(models.Model):
