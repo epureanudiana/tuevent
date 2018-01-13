@@ -74,6 +74,32 @@
 
 
         <h2 class="centered your-events">Your events</h2>
+
+        {% if my_event_list %}
+        {% for event in my_event_list %}
+        <div class="col-md-4">
+            <div class="card card2" style="width: 20rem;">
+                <!--<img class="card-img-top" src="img/leisure/lei1.jpg" alt="Card image cap">-->
+                <div class="card-body">
+                    <h4 class="card-title">{{event.event_name}}</h4>
+                    <p class="card-text">Publisher: {{event.published_by}} </p>
+                    <p class="card-text">Date: {{event.event_date}}</p>
+                    <p class="card-text">Location: {{event.event_location}}</p>
+                    <p class="card-text">{{event.event_description}}</p>
+                 <div class="btn-group" data-toggle="buttons">
+                   <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
+                  
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No events are available </p>
+        {% endif %}
+
+
+
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4">

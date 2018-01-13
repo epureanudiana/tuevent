@@ -68,7 +68,13 @@ def professional(request):
     return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
+    #user_id =   request.user
     #user = get_object_or_404(User, pk=id)
+    #my_event_list = Event.objects.filter(published_by = user_id).order_by('-event_date')[:30]
+    #above_5 = Count('event', filter=Q(book__rating__gt=5))
+    #my_event_list = Event.objects.filter(event_category='pe').order_by('-event_date')[:10]
+    #context = {'my_event_list': my_event_list}
+
     return render(request, 'app/myprofile.html',{ 'user': request.user })
 
 
