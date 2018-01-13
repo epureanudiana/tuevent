@@ -21,6 +21,12 @@ from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
+from django.shortcuts import render
+
+
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
 # Create your views here.
 from .models import Event, ContactMessage
@@ -112,11 +118,18 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-@login_required
-def welcome(request):
+#@login_required
+#def welcome(request):
     #user = request.user
-    return render(request, 'app/welcome.html')
+#    return render(request, 'app/welcome.html')
     #return render(request,
     #'home.html',
     #{ 'user': request.user }
     #)
+
+@login_required
+def login(request):
+    return render(request,
+    'registration/login.html',
+    { 'user': request.user }
+    )
