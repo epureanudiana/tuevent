@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 
-from django.template import RequestContext
 from django.shortcuts import render, get_object_or_404
 
 from django.db.models import F
@@ -21,6 +20,10 @@ from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
+from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
 
 # Create your views here.
 from .models import Event, ContactMessage
@@ -65,7 +68,16 @@ def professional(request):
     return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
-    return render(request, 'app/myprofile.html')
+    user =   request.user
+    #user = get_object_or_404(User, pk=id)
+    my_event_list = Event.objects.filter(published_by = user.id).order_by('-event_date')[:30]
+    #above_5 = Count('event', filter=Q(book__rating__gt=5))
+    #my_event_list = Event.objects.filter(event_category='pe').order_by('-event_date')[:10]
+    context = {'my_event_list': my_event_list}
+
+    return render(request, 'app/myprofile.html',{ 'user': request.user }, context)
+
+
 
 def contact(request):
     form_class = ContactForm
@@ -96,7 +108,7 @@ def share(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description', 'event_category']
+    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description']
 
 class EventShare(CreateView):
     #what type of object are you trying to create?
@@ -123,7 +135,7 @@ def register(request):
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
-    variables = {
+        variables = {
         'form': form
     }
 
@@ -141,11 +153,18 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-@login_required
-def welcome(request):
+#@login_required
+#def welcome(request):
     #user = request.user
-    return render(request, 'app/welcome.html')
+#    return render(request, 'app/welcome.html')
     #return render(request,
     #'home.html',
     #{ 'user': request.user }
     #)
+
+@login_required
+def index(request):
+    return render(request,
+    'app/index.html',
+    { 'user': request.user }
+    )
