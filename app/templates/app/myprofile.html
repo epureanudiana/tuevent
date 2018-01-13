@@ -74,85 +74,30 @@
 
 
         <h2 class="centered your-events">Your events</h2>
-
-        {% if my_event_list %}
-        {% for event in my_event_list %}
-        <div class="col-md-4">
-            <div class="card card2" style="width: 20rem;">
-                <!--<img class="card-img-top" src="img/leisure/lei1.jpg" alt="Card image cap">-->
-                <div class="card-body">
-                    <h4 class="card-title">{{event.event_name}}</h4>
-                    <p class="card-text">Publisher: {{event.published_by}} </p>
-                    <p class="card-text">Date: {{event.event_date}}</p>
-                    <p class="card-text">Location: {{event.event_location}}</p>
-                    <p class="card-text">{{event.event_description}}</p>
-                 <div class="btn-group" data-toggle="buttons">
-                   <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
-                  
-                </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        {% else %}
-        <p>No events are available </p>
-        {% endif %}
-
-
-
         <div class="container-fluid">
           <div class="row">
+            {% if my_event_list %} {% for event in my_event_list %}
+
             <div class="col-md-4">
               <div class="card card2" style="width: 20rem;">
 
                 <div class="card-body">
-                  <h4 class="card-title">Horse riding</h4>
-                  <p class="card-text">Category: Leisure</p>
-                  <p class="card-text">Date: 18 Jan 2017, 14:00</p>
-                  <p class="card-text">Location: Sportcentre</p>
-                  <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
-                </div>
-              </div>
+                  <h4 class="card-title">{{event.event_name}}</h4>
+                  <p class="card-text">Publisher: {{event.published_by}} </p>
+                  <p class="card-text">Date: {{event.event_date}}</p>
+                  <p class="card-text">Location: {{event.event_location}}</p>
+                  <p class="card-text">{{event.event_description}}</p>
+                  <div class="btn-group" data-toggle="buttons">
+                    <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
 
-            </div>
-            <div class="col-md-4">
-              <div class="card card2" style="width: 20rem;">
-
-                <div class="card-body">
-                  <h4 class="card-title">AI Seminar</h4>
-                  <p class="card-text">Category: Educational</p>
-                  <p class="card-text">Date: 20 Sept 2018, 12:30</p>
-                  <p class="card-text">Location: Auditorium 11</p>
-                  <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card2" style="width: 20rem;">
 
-                <div class="card-body">
-                  <h4 class="card-title">Photoshop Training Introduction</h4>
-                  <p class="card-text">Category: Educational</p>
-                  <p class="card-text">Date: 21 Sept 2018, 12:30</p>
-                  <p class="card-text">Location: Auditorium 9</p>
-                  <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card card2" style="width: 20rem;">
-
-                <div class="card-body">
-                  <h4 class="card-title">Jolie's birthday party</h4>
-                  <p class="card-text">Category: Personal</p>
-                  <p class="card-text">Date: 20 Aug 2018, 22:30</p>
-                  <p class="card-text">Location: Beukenlaan 87-87</p>
-                  <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
-                </div>
-              </div>
-            </div>
+            {% endfor %} {% else %}
+            <p>No events are available </p>
+            {% endif %}
           </div>
         </div>
 
