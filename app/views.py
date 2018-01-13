@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 
-from django.template import RequestContext
 from django.shortcuts import render, get_object_or_404
 
 from django.db.models import F
@@ -22,8 +21,6 @@ from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
 from django.shortcuts import render
-
-
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
@@ -71,7 +68,10 @@ def professional(request):
     return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
-    return render(request, 'app/myprofile.html')
+    #user = get_object_or_404(User, pk=id)
+    return render(request, 'app/myprofile.html',{ 'user': request.user })
+
+
 
 def contact(request):
     form_class = ContactForm
@@ -122,7 +122,7 @@ def register(request):
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
-    variables = {
+        variables = {
         'form': form
     }
 
@@ -150,8 +150,8 @@ def logout_page(request):
     #)
 
 @login_required
-def login(request):
+def index(request):
     return render(request,
-    'registration/login.html',
+    'app/index.html',
     { 'user': request.user }
     )

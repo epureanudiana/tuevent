@@ -29,8 +29,6 @@ urlpatterns = [
     ##path('logout', views.logout_page, name='logout_page'),
     ##url(r'^login/',login, name='login'),
 
-
-
     #url(r'^login/$',views.login , name='login'),
     ##url(r'^register/$', register, name='register'),
     ##url(r'^register/success/$', register_success, name='register_success'),
