@@ -1,19 +1,3 @@
-#share {
-    background-image:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(img/share.jpg);
-    height: 100vh;
-    background-position:center;
-    background-size: cover;
-    background-attachment: fixed;
-    padding-top: 120px;
-    padding-bottom:80px;
-}
-
-#share h3{
-    color:white;
-}
-.fcolor {
-  color: white;
-}
 * {
     margin:0;
     padding:0;
@@ -21,12 +5,17 @@
 
 body {
     font-family: sans-serif;
-
 }
 .centered {
     text-align: center;
 }
 
+.leisure_bkg {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(img/personal.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
 
 .titlecolor {
     margin-top: 50px;
@@ -137,7 +126,7 @@ footer
 	font: normal 16px sans-serif;
 
 	padding: 45px 50px;
-
+	margin-top: 80px;
 }
 
 .footer-distributed .footer-left p{

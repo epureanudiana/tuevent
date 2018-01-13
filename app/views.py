@@ -103,9 +103,6 @@ def contact(request):
 
     return render(request, 'app/contact.html', {'form': form_class})
 
-def share(request):
-    return render(request, 'app/share.html')    
-
 class EventCreate(CreateView):
     model = Event
     fields = ['event_name', 'event_location', 'event_date', 'event_description', 'event_category']
@@ -115,11 +112,7 @@ class EventCreate(CreateView):
          form.instance.published_by = user
          return super(EventCreate, self).form_valid(form)
 
-class EventShare(CreateView):
-    #what type of object are you trying to create?
-    model = Event
-    #which attributes do you want to integrate in the new object?
-    fields = ['event_name', 'event_date', 'event_location' 'event_description']
+
 
 
 # Create your views here.
