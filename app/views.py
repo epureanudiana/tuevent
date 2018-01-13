@@ -99,7 +99,7 @@ def contact(request):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description', 'event_category']
+    fields = ['published_by', 'event_name', 'event_location', 'event_date', 'event_description']
 
 
 
