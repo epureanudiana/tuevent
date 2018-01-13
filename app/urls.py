@@ -36,5 +36,6 @@ urlpatterns = [
     #url(r'^logout/$', logout_page, name='logout_page'),
     #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
-    path('contact', views.contact, name='contact')
+    path('contact', views.contact, name='contact'),
+    path('share', views.share, name='share'),
 ]
