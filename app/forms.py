@@ -32,3 +32,31 @@ class ContactForm(forms.Form):
         required=True,
         widget=forms.Textarea
     )
+
+class FilterByForm(forms.Form):
+    FILTERS = (
+    ('no', 'None'),
+    ('le', 'Leisure'),
+    ('pe', 'Personal'),
+    ('ed', 'Educational'),
+    ('pr', 'Professional'))
+    filterby = forms.ChoiceField(choices=FILTERS, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(FilterByForm, self).__init__(*args, **kwargs)
+        self.fields['filterby'].label = ""
+        self.fields['filterby'].widget.attrs.update({'class' : 'form-control'})
+        self.fields['filterby'].widget.attrs.update({'onchange': 'this.form.submit();'})
+
+class OrderByForm(forms.Form):
+    ORDERINGS = (
+    ('up', 'Upcoming to furthest'),
+    ('fu', 'Furthest to upcoming'),
+    ('po', 'Most popular'))
+    orderby = forms.ChoiceField(choices=ORDERINGS, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(OrderByForm, self).__init__(*args, **kwargs)
+        self.fields['orderby'].label = ""
+        self.fields['orderby'].widget.attrs.update({'class' : 'form-control'})
+        self.fields['orderby'].widget.attrs.update({'onchange': 'this.form.submit();'})
