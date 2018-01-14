@@ -27,7 +27,9 @@ from django.http import HttpResponse
 from .models import Event, ContactMessage
 
 def index(request):
-    return render(request, 'app/index.html')
+
+    events=Event.objects.all()
+    return render_to_response('app/index.html', {"events": events})
 
 def leisure(request):
     latest_event_list = Event.objects.filter(event_category='le')
@@ -174,7 +176,9 @@ def logout_page(request):
 
 @login_required
 def index(request):
-    return render(request,
-    'app/index.html',
-    { 'user': request.user }
-    )
+    #return render(request,
+    #'app/index.html',
+
+    #)
+    events=Event.objects.all()
+    return render_to_response('app/index.html', {"events": events}, { 'user': request.user })
