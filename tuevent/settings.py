@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "geoposition",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'tuevent.urls'
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCL8RO5vKldvE-4Nv7UdZgbJa5IRMANPls'
 
 TEMPLATES = [
     {

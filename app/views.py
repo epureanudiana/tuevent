@@ -1,31 +1,29 @@
 #views.py
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView
-
-from app.forms import *
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 
-from django.shortcuts import render, get_object_or_404
+from app.forms import *
+from .forms import ContactForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 from django.db.models import F
 from django.conf import settings
-from .forms import ContactForm
 
-# Imports for the Contact page
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
-from django.template import Context
-from django.template.loader import get_template
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 
-# Create your views here.
+from django.template import RequestContext
+from django.template import Context
+from django.template.loader import get_template
+
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+
 from .models import Event, ContactMessage
 
 def index(request):
@@ -71,19 +69,18 @@ def myprofile(request):
     user =   request.user
     #user = get_object_or_404(User, pk=request.user.id)
     my_event_list = Event.objects.filter(published_by = user).order_by('-event_date')[:30]
-    #above_5 = Count('event', filter=Q(book__rating__gt=5))
-    #my_event_list =  Event.objects.filter(event_category='pr')
-    #context = {'my_event_list': my_event_list}
-
-
     #my_event_list = Event.objects.filter(event_category='le')
-
     context = {'my_event_list': my_event_list}
     return render(request, 'app/myprofile.html', context, { 'user': request.user })
 
 
+def map(request):
+    events=Event.objects.all()
+    return render_to_response('app/map.html', {"events": events})
 
-
+#def showZoneDetail(request, zone_id):
+#    zone=Zone.objects.get(id=zone_id)
+#    return render_to_response('zonendetail.html', {"zone": zone})
 
 
 def contact(request):
