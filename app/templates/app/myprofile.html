@@ -49,23 +49,27 @@
             </div>
           </li>
 
-          <li>
-            <form>
-              <div class="form-group">
-                <label for="sel1" style="color:brown"><b>Filter by</b></label>
-                <select class="form-control" id="sel1">
-                    <option>Most popular</option>
-                    <option>Leisure</option>
-                    <option>Personal</option>
-                    <option>Educational</option>
-                    <option>Professional</option>
-                    <option>Upcoming to furthest</option>
-                    <option>Furthest to upcoming</option>
-                  </select>
-              </div>
-            </form>
-          </li>
+          <form id="form" method="post">
+            <div class="form-group">
+            <li style="width:100%">
 
+                  <label for="sel0" style="color:brown"><b>Filter by</b></label>
+                  {% csrf_token %}
+                  {{ filterbyform }}
+
+            </li>
+
+            <li style="width:100%">
+
+                  <label for="sel1" style="color:brown"><b>Order by</b></label>
+                  {% csrf_token %}
+                  {{ orderbyform }}
+
+
+
+          </li>
+          </div>
+        </form>
         </ul>
 
       </nav>
