@@ -88,11 +88,13 @@ def myprofile(request):
 
 def contact(request):
     form_class = ContactForm
+    success = False
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
 
         if form.is_valid():
+            success = True
             contact_name = request.POST.get(
                 'contact_name'
             , '')
@@ -106,12 +108,11 @@ def contact(request):
             m.sender_email = contact_email
             m.content = form_content
             m.save()
-            return redirect('/contact')
 
-    return render(request, 'app/contact.html', {'form': form_class})
+    return render(request, 'app/contact.html', {'form': form_class, 'success': success})
 
 def share(request):
-    return render(request, 'app/share.html')    
+    return render(request, 'app/share.html')
 
 class EventCreate(CreateView):
     model = Event
