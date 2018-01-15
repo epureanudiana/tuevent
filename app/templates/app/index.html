@@ -117,12 +117,10 @@
           <li><a href="{% url 'app:logout_page' %}">LOGOUT</a></li>
           <li><a href="{% url 'app:myprofile' %}">MY PROFILE</a></li>
           <li><a href="{% url 'app:contact' %}">CONTACT</a></li>
-<<<<<<< HEAD
+
           <li><a href="{% url 'app:share2' %}">SHARE</a></li>
-=======
-          <li><a href="{% url 'app:share' %}">SHARE</a></li>
           <li><a class="slide-section" href="#map">MAP</a></li>
->>>>>>> 5b62e4e0390a7e58b8fde5a706d0a898653bed3b
+
           <li><a class="slide-section" href="#events">EVENTS</a></li>
           <li><a class="slide-section" href="#about">ABOUT</a></li>
           <li><a class="slide-section" href="#home">HOME</a></li>
@@ -158,22 +156,6 @@
       </div>
     </div>
   </section>
-<<<<<<< HEAD
-      <section class="events move" id="events">
-      <h3 class="text-center">EVENTS</h3>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-lg-3">
-            <div id="lei" class="card card2" style="width: 15rem;">
-              <img class="card-img-top card-photo" src="{% static 'app/img/leisure.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Leisure</h4>
-                <p class="card-text">Sports? Music?<br> Dancing lessons?<br>You can find here any relaxing activity for you and your friends.</p>
-              </div>
-              <div class="card-body">
-                <a href="{% url 'app:leisure' %}" class="card-link bigger"><b>See events</b></a>
-              </div>
-=======
   <section class="events move" id="events">
     <h3 class="text-center">EVENTS</h3>
     <div class="container">
@@ -187,7 +169,6 @@
             </div>
             <div class="card-body">
               <a href="{% url 'app:leisure' %}" class="card-link bigger"><b>See events</b></a>
->>>>>>> 5b62e4e0390a7e58b8fde5a706d0a898653bed3b
             </div>
           </div>
         </div>
@@ -234,10 +215,9 @@
   <section class="about move" id="map">
 
     <div class="container text-center my-5 py-5">
-
-      <h3 class="text-center">EVENTS</h3>
       <div class="row col-md-12  text-center">
-        <div id="map"> </div>
+        <div id="map">
+         </div>
       </div>
     </div>
   </section>
@@ -246,24 +226,7 @@
 
     <div class="footer-right">
 
-<<<<<<< HEAD
-      <div class="footer-left">
 
-        <p class="footer-links">
-          <a class="slide-section" href="#home">Home</a>
-          ·
-          <a class="slide-section" href="#about">About</a>
-          ·
-          <a class="slide-section" href="#events">Events</a>
-          ·
-          <a href="{% url 'app:share2' %}">Share</a>
-          ·
-          <a href="{% url 'app:contact' %}">Contact</a>
-        </p>
-
-        <p>TU/event &copy; 2017</p>
-      </div>
-=======
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
       <a href="#"><i class="fa fa-linkedin"></i></a>
@@ -277,13 +240,12 @@
         <a class="slide-section" href="#home">Home</a> ·
         <a class="slide-section" href="#about">About</a> ·
         <a class="slide-section" href="#events">Events</a> ·
-        <a href="{% url 'app:share' %}">Share</a> ·
+        <a href="{% url 'app:share2' %}">Share</a> ·
         <a href="{% url 'app:contact' %}">Contact</a>
       </p>
 
       <p>TU/event &copy; 2017</p>
     </div>
->>>>>>> 5b62e4e0390a7e58b8fde5a706d0a898653bed3b
 
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
