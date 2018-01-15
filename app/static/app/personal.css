@@ -6,8 +6,16 @@
     background-attachment: fixed;
     padding-top: 120px;
     padding-bottom:80px;
+    overflow:scroll;
 }
 
+.thanks {
+  margin-top: 80px;
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  font-style: bold;
+}
 #share h3{
     color:white;
 }

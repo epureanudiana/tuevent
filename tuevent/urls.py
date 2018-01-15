@@ -18,12 +18,15 @@ from django.contrib import admin
 from django.conf.urls import url
 from app.views import *
 from django.contrib.auth.views import login
+from rest_framework.urlpatterns import format_suffix_patterns
+from app import views
 
 
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
 
+    path('EventList',views.EventList.as_view()),
     url(r'^login',login, name='login'),
     url(r'^index', index, name='index'),
     url(r'^register/$', register, name='register'),

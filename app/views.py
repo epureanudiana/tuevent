@@ -5,6 +5,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView
 
 from app.forms import *
+from .forms import PostEvent
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
@@ -14,7 +15,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import F
 from django.conf import settings
 from .forms import ContactForm
-
+from django.contrib.auth.models import User, Group
 # Imports for the Contact page
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
@@ -24,9 +25,25 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Event
+from .serializers import EventSerializer
 
 # Create your views here.
 from .models import Event, ContactMessage
+
+
+class EventList(APIView):
+
+    def get(self, request):
+        events = Event.objects.all()
+        serializer = EventSerializer(events, many=True)
+        return Response(serializer.data)
+
+    def post(self):
+        pass
 
 def index(request):
     return render(request, 'app/index.html')
@@ -111,8 +128,8 @@ def contact(request):
 
     return render(request, 'app/contact.html', {'form': form_class, 'success': success})
 
-def share(request):
-    return render(request, 'app/share.html')
+
+
 
 class EventCreate(CreateView):
     model = Event
@@ -123,18 +140,25 @@ class EventCreate(CreateView):
          form.instance.published_by = user
          return super(EventCreate, self).form_valid(form)
 
-class EventShare(CreateView):
-    #what type of object are you trying to create?
-    model = Event
-    #which attributes do you want to integrate in the new object?
-    fields = ['event_name', 'event_date', 'event_location' 'event_description']
 
 
 # Create your views here.
+@login_required
+def share2(request):
+    if request.method == "POST":
+        form = PostEvent(request.POST)
+        if form.is_valid():
+            event = form.save(commit = False)
+            event.published_by = request.user
+            event.save()
+            return redirect('app:share3')
+    else:
+        form = PostEvent()
+    return render(request, 'app/share2.html', {'form': form})
 
-
-
-
+@login_required
+def share3(request):
+    return render(request, 'app/share3.html')
 @csrf_protect
 def register(request):
     if request.method == 'POST':

@@ -37,5 +37,7 @@ urlpatterns = [
     #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
     path('contact', views.contact, name='contact'),
-    path('share', views.share, name='share'),
+    #path('share', views.share, name='share'),
+    path('share2', views.share2, name='share2'),
+    path('share3', views.share3, name='share3'),
 ]
