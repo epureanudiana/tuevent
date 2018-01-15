@@ -44,7 +44,7 @@ class PostEvent(forms.ModelForm):
     )
     event_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Event name'}))
     event_location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Location'}))
-    event_date = forms.DateTimeField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'YYYY-MM-DD HH:mm:ss'}))
+    event_date = forms.DateTimeField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'YYYY-MM-DD HH:mm'}))
     event_category = forms.ChoiceField(label='', choices=CATEGORIES, widget=forms.Select(attrs={'class':'form-control selectpicker'}))
     event_description = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder':'Description'}))
     class Meta:
