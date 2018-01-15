@@ -36,12 +36,14 @@ class ContactForm(forms.Form):
     )
 
 class EventForm(forms.Form):
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required=True)
-    content = forms.CharField(
-        required=True,
-        widget=forms.Textarea
-    )
+    CHOICES=[('yes','yes'),
+         ('no','no')]
+
+    attendance = forms.ChoiceField(choices=CHOICES, required=True, widget=forms.RadioSelect())
+    ev_name = forms.CharField(required=True)
+    ev_location = forms.CharField(required=True)
+    ev_description = forms.CharField(required=True)
+
 
 class PostEvent(forms.ModelForm):
     CATEGORIES = (

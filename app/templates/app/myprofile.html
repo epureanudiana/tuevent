@@ -78,6 +78,7 @@
             </form>
             </div>
           </div>
+          <h1> Published by me </h1>
           <div class="row">
             {% if my_event_list %} {% for event in my_event_list %}
 
@@ -90,6 +91,31 @@
                   <p class="card-text">Date: {{event.event_date}}</p>
                   <p class="card-text">Location: {{event.event_location}}</p>
                   <p class="card-text">{{event.event_description}}</p>
+                  <div class="btn-group" data-toggle="buttons">
+                    <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %} {% else %}
+            <p>No events are available </p>
+            {% endif %}
+          </div>
+          <h1> I am attending</h1>
+            <div class="row">
+            {% if attendances %} {% for event in attendances %}
+
+            <div class="col-md-6 col-lg-3">
+              <div class="card card2">
+
+                <div class="card-body">
+                  <h4 class="card-title">{{event.y_event.event_name}}</h4>
+                  <p class="card-text">Publisher: {{event.y_event.published_by}} </p>
+                  <p class="card-text">Date: {{event.y_event.event_date}}</p>
+                  <p class="card-text">Location: {{event.y_event.event_location}}</p>
+                  <p class="card-text">{{event.y_event.event_description}}</p>
                   <div class="btn-group" data-toggle="buttons">
                     <button type="button" class="btn btn-outline-danger remove_button">Remove</button>
 

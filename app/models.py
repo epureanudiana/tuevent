@@ -26,6 +26,10 @@ class Event(models.Model):
     def get_absolute_url(self):
         return reverse('app:leisure')
 
+class XattendsY(models.Model):
+    x_user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    y_event = models.ForeignKey('app.Event', on_delete=models.CASCADE)
+
 class ContactMessage(models.Model):
     sender_name = models.CharField(max_length=200)
     sender_email = models.CharField(max_length=200)

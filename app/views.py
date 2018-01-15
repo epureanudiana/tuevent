@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 
 from app.forms import *
 from .forms import PostEvent
-from .forms import ContactForm, FilterByForm, OrderByForm
+from .forms import ContactForm, FilterByForm, OrderByForm, EventForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
@@ -35,7 +35,7 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 
 
-from .models import Event, ContactMessage
+from .models import Event, ContactMessage, XattendsY
 
 
 class EventList(APIView):
@@ -55,11 +55,17 @@ class EventList(APIView):
 
 def leisure(request):
     form_class = OrderByForm
+    evform_class = EventForm
     latest_event_list = Event.objects.filter(event_category='le')
     latest_event_list = latest_event_list.order_by('-event_date')
+    attendances = XattendsY.objects.filter(x_user=request.user)
+    attventsID = XattendsY.objects.values('y_event')
+    attvents = Event.objects.filter(id__in=attventsID)
+    print(attvents)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
+        evform = evform_class(data=request.POST)
 
         if form.is_valid():
             order = request.POST.get('orderby', '')
@@ -67,11 +73,36 @@ def leisure(request):
             form.fields['orderby'].value = order
             form_class = form
 
+        if evform.is_valid():
+            attend = request.POST.get('attendance', '')
+            evname = request.POST.get('ev_name', '')
+            evloca = request.POST.get('ev_location', '')
+            evdesc = request.POST.get('ev_description', '')
+            event  = Event.objects.get(event_name=evname, event_location=evloca, event_description=evdesc)
+            existence = XattendsY.objects.filter(x_user=request.user, y_event=event).exists()
+
+            if (attend == 'yes'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+                a = XattendsY()
+                a.x_user = request.user
+                a.y_event = event
+                a.save()
+            elif (attend == 'no'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+
+
     context = {'latest_event_list': latest_event_list[:50],
         'category': 'Leisure',
         'css': 'app/leisure.css',
         'js': 'app/javascript/leisure.js',
-        'orderbyform': form_class}
+        'orderbyform': form_class,
+        'evform': evform_class,
+        'attendances': attendances,
+        'attvents': attvents}
     return render(request, 'app/events-base.html', context)
 
 def personal(request):
@@ -144,6 +175,7 @@ def myprofile(request):
     #my_event_list = Event.objects.filter(event_category='le')
     form_class = FilterByForm
     form_class1 = OrderByForm
+    attendances = XattendsY.objects.filter(x_user=request.user)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
@@ -162,7 +194,7 @@ def myprofile(request):
             form_class1 = form1
 
     context = {'my_event_list': my_event_list[:30], 'user': user,
-    'filterbyform': form_class, 'orderbyform': form_class1}
+    'filterbyform': form_class, 'orderbyform': form_class1, 'attendances': attendances}
     return render(request, 'app/myprofile.html', context)
 
 def order_events(order, events):

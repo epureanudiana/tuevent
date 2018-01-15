@@ -121,14 +121,20 @@
                                 <p class="card-text">Location: {{event.event_location}}</p>
                                 <p class="card-text">{{event.event_description}}</p>
                              <div class="btn-group" data-toggle="buttons">
-
+                               <form method="post">
+                                 {% csrf_token %}
+                                <input type="hidden" name="ev_name" value="{{ event.event_name }}">
+                                <input type="hidden" name="ev_location" value="{{ event.event_location }}">
+                                <input type="hidden" name="ev_description" value="{{ event.event_description }}">
                                 <label class="btn btn-success  btn-sm">
-                                <input type="radio" name="options" id="option1" autocomplete="off"> Yes
+                                <input type="radio" name="attendance" value="yes" autocomplete="off" onclick="this.form.submit();"
+                                {% if event in attvents %}checked{% endif %}> Yes
                                  </label>
                                  <label class="btn btn-danger btn-sm">
-                                <input type="radio" name="options" id="option2" autocomplete="off" checked> No
+                                <input type="radio" name="attendance" value="no" autocomplete="off" onclick="this.form.submit();"
+                                {% if event not in attvents %}checked{% endif %}> No
                                 </label>
-                              
+                              </form>
                                 </div>
                             </div>
                         </div>
