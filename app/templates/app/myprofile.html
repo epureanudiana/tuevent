@@ -107,9 +107,6 @@
     </div>
   </div>
 
-  <!---->
-
-
 
   <footer class="footer-distributed">
 
@@ -125,7 +122,9 @@
     <div class="footer-left">
 
       <p class="footer-links">
-        <a href="{% url 'app:index' %}">Home</a> ·
+        <a class="slide-section" href="{% url 'app:index' %}#home">Home</a> ·
+        <a class="slide-section" href="{% url 'app:index' %}#about">About</a> ·
+        <a class="slide-section" href="{% url 'app:index' %}#events">Events</a> ·
         <a href="{% url 'app:share2' %}">Share</a> ·
         <a href="{% url 'app:contact' %}">Contact</a>
       </p>

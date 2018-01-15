@@ -105,7 +105,7 @@
             </div>
         </div>
 
-        <section class="cards">
+        <section class="cards" style="margin-bottom: 25px;">
             <div class="container">
                 <div class="row row-margin">
                     <!-- first row, first card-->
@@ -165,22 +165,20 @@
 
 			<div class="footer-left">
 
-				<p class="footer-links">
-					<a href="#">Home</a>
-					·
-					<a href="{% url 'app:share2' %}">Share</a>
-					·
-                    <a href="{% url 'app:contact' %}">Contact</a>
-				</p>
-
-				<p>TU/event &copy; 2017</p>
+        <p class="footer-links">
+          <a class="slide-section" href="{% url 'app:index' %}#home">Home</a> ·
+          <a class="slide-section" href="{% url 'app:index' %}#about">About</a> ·
+          <a class="slide-section" href="{% url 'app:index' %}#events">Events</a> ·
+          <a href="{% url 'app:share2' %}">Share</a> ·
+          <a href="{% url 'app:contact' %}">Contact</a>
+        </p>
 			</div>
 
 		</footer>
 
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-         <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
-         <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
-        <script src="{% static js %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.js"></script>
+    <script src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+    <script src="{% static js %}"></script>
     </body>
 </html>
