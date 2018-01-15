@@ -47,7 +47,7 @@
                     {% if latest_event_list %}
                     {% for event in latest_event_list %}
                     <div class="col-md-4">
-                        <div class="card card2" style="width: 20rem;">
+                        <div class="card card2" >
                             <!--<img class="card-img-top" src="img/leisure/lei1.jpg" alt="Card image cap">-->
                             <div class="card-body">
                                 <h4 class="card-title">{{event.event_name}}</h4>
@@ -56,14 +56,14 @@
                                 <p class="card-text">Location: {{event.event_location}}</p>
                                 <p class="card-text">{{event.event_description}}</p>
                              <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-danger  btn-sm">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Don't attend
+                                <label class="btn btn-success  btn-sm">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
                                  </label>
-                                 <label class="btn btn-success btn-sm">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> Attend
+                                 <label class="btn btn-danger btn-sm">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> No
                                 </label>
                                 <label class="btn btn-warning btn-sm">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> I'm not sure
+                                <input type="radio" name="options" id="option3" autocomplete="off"> Not sure
                                 </label>
                                 </div>
                             </div>
