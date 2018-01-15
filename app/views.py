@@ -1,16 +1,13 @@
 #views.py
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView
+from django.views.decorators.csrf import csrf_protect
 
 from app.forms import *
 from .forms import PostEvent
+from .forms import ContactForm, FilterByForm, OrderByForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.views.decorators.csrf import csrf_protect
-
-from django.shortcuts import render, get_object_or_404
 
 from django.db.models import F
 from django.conf import settings
@@ -19,19 +16,25 @@ from django.contrib.auth.models import User, Group
 # Imports for the Contact page
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
-from django.template import Context
-from django.template.loader import get_template
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+
 from django.template import RequestContext
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Event
 from .serializers import EventSerializer
 
-# Create your views here.
+from django.template import Context
+from django.template.loader import get_template
+
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+
+
 from .models import Event, ContactMessage
 
 
@@ -46,61 +49,149 @@ class EventList(APIView):
         pass
 
 def index(request):
-    return render(request, 'app/index.html')
+
+    events=Event.objects.all()
+    return render_to_response('app/index.html', {"events": events})
 
 def leisure(request):
+    form_class = OrderByForm
     latest_event_list = Event.objects.filter(event_category='le')
-    latest_event_list = latest_event_list.order_by('-event_date')[:50]
-    context = {'latest_event_list': latest_event_list,
+    latest_event_list = latest_event_list.order_by('-event_date')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            order = request.POST.get('orderby', '')
+            latest_event_list = order_events(order, latest_event_list)
+            form.fields['orderby'].value = order
+            form_class = form
+
+    context = {'latest_event_list': latest_event_list[:50],
         'category': 'Leisure',
         'css': 'app/leisure.css',
-        'js': 'app/javascript/leisure.js'}
+        'js': 'app/javascript/leisure.js',
+        'orderbyform': form_class}
     return render(request, 'app/events-base.html', context)
 
 def personal(request):
+    form_class = OrderByForm
     latest_event_list = Event.objects.filter(event_category='pe')
-    latest_event_list = latest_event_list.order_by('-event_date')[:50]
-    context = {'latest_event_list': latest_event_list,
+    latest_event_list = latest_event_list.order_by('-event_date')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            order = request.POST.get('orderby', '')
+            latest_event_list = order_events(order, latest_event_list)
+            form.fields['orderby'].value = order
+            form_class = form
+
+    context = {'latest_event_list': latest_event_list[:50],
         'category': 'Personal',
         'css': 'app/personal.css',
-        'js': 'app/javascript/personal.js'}
+        'js': 'app/javascript/personal.js',
+        'orderbyform': form_class}
     return render(request, 'app/events-base.html', context)
 
 def educational(request):
+    form_class = OrderByForm
     latest_event_list = Event.objects.filter(event_category='ed')
-    latest_event_list = latest_event_list.order_by('-event_date')[:50]
-    context = {'latest_event_list': latest_event_list,
+    latest_event_list = latest_event_list.order_by('-event_date')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            order = request.POST.get('orderby', '')
+            latest_event_list = order_events(order, latest_event_list)
+            form.fields['orderby'].value = order
+            form_class = form
+
+    context = {'latest_event_list': latest_event_list[:50],
         'category': 'Educational',
         'css': 'app/educational.css',
-        'js': 'app/javascript/educational.js'}
+        'js': 'app/javascript/educational.js',
+        'orderbyform': form_class}
     return render(request, 'app/events-base.html', context)
 
 def professional(request):
+    form_class = OrderByForm
     latest_event_list = Event.objects.filter(event_category='pr')
-    latest_event_list = latest_event_list.order_by('-event_date')[:50]
-    context = {'latest_event_list': latest_event_list,
+    latest_event_list = latest_event_list.order_by('-event_date')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            order = request.POST.get('orderby', '')
+            latest_event_list = order_events(order, latest_event_list)
+            form.fields['orderby'].value = order
+            form_class = form
+
+    context = {'latest_event_list': latest_event_list[:50],
         'category': 'Professional',
         'css': 'app/professional.css',
-        'js': 'app/javascript/professional.js'}
+        'js': 'app/javascript/professional.js',
+        'orderbyform': form_class}
     return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
     user =   request.user
     #user = get_object_or_404(User, pk=request.user.id)
-    my_event_list = Event.objects.filter(published_by = user).order_by('-event_date')[:30]
-    #above_5 = Count('event', filter=Q(book__rating__gt=5))
-    #my_event_list =  Event.objects.filter(event_category='pr')
-    #context = {'my_event_list': my_event_list}
-
-
+    my_event_list = Event.objects.filter(published_by = user).order_by('-event_date')
     #my_event_list = Event.objects.filter(event_category='le')
+    form_class = FilterByForm
+    form_class1 = OrderByForm
 
-    context = {'my_event_list': my_event_list}
-    return render(request, 'app/myprofile.html', context, { 'user': request.user })
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        form1 = form_class1(data=request.POST)
 
+        if form.is_valid():
+            filterr = request.POST.get('filterby', '')
+            my_event_list = filter_events(filterr, my_event_list)
+            form.fields['filterby'].value = filterr
+            form_class = form
 
+        if form1.is_valid():
+            order = request.POST.get('orderby', '')
+            my_event_list = order_events(order, my_event_list)
+            form1.fields['orderby'].value = order
+            form_class1 = form1
 
+    context = {'my_event_list': my_event_list[:30], 'user': user,
+    'filterbyform': form_class, 'orderbyform': form_class1}
+    return render(request, 'app/myprofile.html', context)
 
+def order_events(order, events):
+    if (order == 'up'):
+        events = events.order_by('-event_date')
+    elif (order == 'fu'):
+        events = events.order_by('event_date')
+    elif (order == 'po'):
+        events = events.order_by('-event_name') #TODO POPOLARITY
+    return events
+
+def filter_events(filterr, events):
+    if (filterr == 'le'):
+        events = events.filter(event_category='le')
+    elif (filterr == 'pe'):
+        events = events.filter(event_category='pe')
+    elif (filterr == 'ed'):
+        events = events.filter(event_category='ed')
+    elif (filterr == 'pr'):
+        events = events.filter(event_category='pr')
+    return events
+
+def map(request):
+    events=Event.objects.all()
+    return render_to_response('app/map.html', {"events": events})
+
+#def showZoneDetail(request, zone_id):
+#    zone=Zone.objects.get(id=zone_id)
+#    return render_to_response('zonendetail.html', {"zone": zone})
 
 
 def contact(request):
@@ -159,6 +250,7 @@ def share2(request):
 @login_required
 def share3(request):
     return render(request, 'app/share3.html')
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -201,7 +293,9 @@ def logout_page(request):
 
 @login_required
 def index(request):
-    return render(request,
-    'app/index.html',
-    { 'user': request.user }
-    )
+    #return render(request,
+    #'app/index.html',
+
+    #)
+    events=Event.objects.all()
+    return render_to_response('app/index.html', {"events": events}, { 'user': request.user })

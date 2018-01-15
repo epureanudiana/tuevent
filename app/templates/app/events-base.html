@@ -33,6 +33,10 @@
         <div class="jumbotron leisure_bkg">
             <div class="container">
                     <h1 class="display-3 text-center titlecolor">{{ category }} events</h1>
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ orderbyform }}
+                    </form>
             </div>
         </div>
 

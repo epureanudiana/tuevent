@@ -5,14 +5,16 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href=" {% static 'app/base.css'%}">
-    <link rel="stylesheet" type="text/css" href=" {% static 'app/home.css'%}">
+
 </head>
 <body>
+  <div class="tapeta" id="tapeta">
     <div class="wrapper">
         <div class="container">
             <h1>{% block head %}{% endblock %}</h1>
             {% block content %}{% endblock %}
         </div>
     </div>
+  </div>
 </body>
 </html>

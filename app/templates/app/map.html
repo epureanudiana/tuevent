@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lat/Lng Object Literal</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+         height: 100%;
+       }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding:0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHdDx6ji1n5Rvvyqa2Bm5_U-usL_i2sQ8"></script>
+    <script>
+      // In this example, we center the map, and add a marker, using a LatLng object
+      // literal instead of a google.maps.LatLng object. LatLng object literals are
+      // a convenient way to add a LatLng coordinate and, in most cases, can be used
+      // in place of a google.maps.LatLng object.
+
+      var map;
+      function initialize() {
+        var mapOptions = {
+          zoom:15,
+          center: {lat: 51.447, lng: 5.484}
+        };
+        map = new google.maps.Map(document.getElementById('map'),
+            mapOptions);
+
+            var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var labelIndex = 0;
+
+
+          {% for mark in events %}
+            var pointer = new google.maps.LatLng({{mark.position.latitude}},{{mark.position.longitude}});
+            var point = new google.maps.Marker({
+              position: pointer,
+              map: map,
+
+            //  icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+
+              animation: google.maps.Animation.DROP,
+              label: labels[labelIndex++ % labels.length],
+              title: '{{ mark.event_name }}, {{ mark.published_by }}, {{ mark.event_location }}',
+            });
+
+
+            var point_infowindow = new google.maps.InfoWindow({
+          //   content: '<p>Marker Location:' + point.getPosition() + '</p>'
+           content: '<p> {{mark.event_name}} <br> Location: {{mark.event_location}} </p>'
+            });
+
+          //google.maps.event.addListener(point, 'click', function() {
+          //    point_infowindow.open(map, point);
+          //  });
+
+
+            {% endfor %}
+
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+
+
+  {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="footer, links, icons" />
+
+    <title>My profile</title>
+    <link href="{% static 'app/myprofile.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="logo-section">
+          <button class="hb-button"><i class="fa fa-bars"></i></button>
+        </div>
+        <ul>
+          <li><a href="{% url 'app:index' %}">HOME</a></li>
+
+        </ul>
+      </nav>
+    </header>
+
+
+<section class="about move" id="map">
+    <div  id="map">  </div>
+
+</section>
+
+</body>
+</html>
