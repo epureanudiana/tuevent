@@ -11,9 +11,9 @@ $("#lei").hover(
   // Mouse Out
   function(){
 
+      $("#ed").css("opacity","1"),
       $("#prf").css("opacity","1"),
-      $("#per").css("opacity","1"),
-      $("#ed").css("opacity","0.5");
+      $("#per").css("opacity","1");
 });
 
 $("#per").hover(
@@ -27,9 +27,8 @@ $("#per").hover(
   },
   // Mouse Out
   function(){
-
-      $("#prf").css("opacity","1"),
       $("#ed").css("opacity","1"),
+      $("#prf").css("opacity","1"),
       $("#lei").css("opacity","1");
 });
 $("#ed").hover(

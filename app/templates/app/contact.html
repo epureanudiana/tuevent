@@ -22,21 +22,15 @@
         <button class="hb-button"><i class="fa fa-bars"></i></button>
       </div>
       <ul>
-        <li><a class="slide-section" href="{% url 'app:contact' %}">CONTACT</a></li>
-        <li><a class="slide-section" href="#share">SHARE</a></li>
-        <li><a class="slide-section" href="#events">EVENTS</a></li>
-        <li><a class="slide-section" href="#about">ABOUT</a></li>
-        <li><a class="slide-section" href="#home">HOME</a></li>
-        <li><a href="{% url 'app:myprofile' %}">MY PROFILE</a></li>
-
+        <li><a class="slide-section" href="{% url 'app:index' %}#home">HOME</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="jumbotron leisure_bkg">
-    <div class="container">
-      <h1 class="display-3 text-center titlecolor">Contact us</h1>
-    </div>
+      <div class="container">
+              <h1 class="display-3 text-center titlecolor">Contact us</h1>
+      </div>
   </div>
 
   </section>
@@ -47,7 +41,12 @@
 
     <form action="" method="post">
       <div class="container">
-        {% csrf_token %} {% for field in form %}
+        {% csrf_token %}
+        {% if success %}
+            <p>Your message has been sent.</p>
+        {% endif %}
+        {% if not success %}
+        {% for field in form %}
         <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <div class="col-sm-offset-2 col-sm-10">
@@ -61,30 +60,10 @@
         <div class="centered">
           <button class="btn btn-dark btn-lg" type="submit">Send</button>
         </div>
+        {% endif %}
     </form>
 
 
-<<<<<<< HEAD
-    </head>
-    <body>
-               <header>
-        <nav>
-            <div class="logo-section">
-                <button class="hb-button"><i class="fa fa-bars"></i></button>
-            </div>
-            <ul>
-                <li><a class="slide-section" href="{% url 'app:index'%}">HOME</a></li>
-
-            </ul>
-        </nav>
-    </header>
-
-        <div class="jumbotron leisure_bkg">
-            <div class="container">
-                    <h1 class="display-3 text-center titlecolor">Contact us</h1>
-            </div>
-        </div>
-=======
   </section>
 
   <footer class="footer-distributed">
@@ -118,6 +97,5 @@
   <script src="{% static 'app/javascript/text/javascript' %}" src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
   <script src="{% static 'app/javascript/personal.js' %}"></script>
 </body>
->>>>>>> 3ee1828ac423c384a39d82651ff43082357923c2
 
 </html>
