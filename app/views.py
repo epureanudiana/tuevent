@@ -48,10 +48,10 @@ class EventList(APIView):
     def post(self):
         pass
 
-def index(request):
+#def index(request):
 
-    events=Event.objects.all()
-    return render_to_response('app/index.html', {"events": events})
+#    events=Event.objects.all()
+#    return render_to_response('app/index.html', {"events": events})
 
 def leisure(request):
     form_class = OrderByForm
@@ -298,4 +298,8 @@ def index(request):
 
     #)
     events=Event.objects.all()
-    return render_to_response('app/index.html', {"events": events}, { 'user': request.user })
+    context =  {"events": events, 'user': request.user}
+
+    #events=Event.objects.all()
+    #return render_to_response('app/index.html', {"events": events}, { 'user': request.user })
+    return render_to_response('app/index.html', context)

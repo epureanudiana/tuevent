@@ -49,7 +49,7 @@ class PostEvent(forms.ModelForm):
     event_description = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder':'Description'}))
     class Meta:
         model = Event
-        fields = ('published_by', 'event_name', 'event_date', 'event_location', 'event_description', 'event_category')
+        fields = ('event_name', 'event_date', 'event_location', 'event_description', 'event_category')
 class FilterByForm(forms.Form):
     FILTERS = (
     ('no', 'None'),
