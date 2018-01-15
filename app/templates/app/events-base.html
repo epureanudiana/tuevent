@@ -121,15 +121,14 @@
                                 <p class="card-text">Location: {{event.event_location}}</p>
                                 <p class="card-text">{{event.event_description}}</p>
                              <div class="btn-group" data-toggle="buttons">
+                               <form method="post">
                                 <label class="btn btn-success  btn-sm">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+                                <input type="radio" name="options" id="option1" autocomplete="off"> Yes
                                  </label>
                                  <label class="btn btn-danger btn-sm">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> No
+                                <input type="radio" name="options" id="option2" autocomplete="off" checked> No
                                 </label>
-                                <label class="btn btn-warning btn-sm">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> Not sure
-                                </label>
+                              </form>
                                 </div>
                             </div>
                         </div>

@@ -9,10 +9,7 @@
   <title>Tu/event</title>
   <link href="{% static 'app/style.css' %}" rel = "stylesheet" type = "text/css">
   <link href="{% static 'app/css/bootstrap.min.css' %}" rel ="stylesheet">
-  <link href="{% static 'app/jquery.datetimepicker.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'app/daterangepicker.css' %}" />
-
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <style>
@@ -226,14 +223,11 @@
       </div>
 
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'app/javascript/jquery.datetimepicker.full.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.js"></script>
     <script src="{% static 'app/javascript/js/jquery-3.2.1.min.js' %}"></script>
-    <script>
-    $("#datetimepicker").datetimepicker();
-    </script>
-    <script src="{% static 'app/javascript/index.js' %}"></script>
+    <script src="{% static 'app/javascript/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/javascript/personal.js' %}"></script>
   </body>
 
   </html>
