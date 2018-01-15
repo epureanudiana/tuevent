@@ -275,7 +275,7 @@ li a:hover {
         width: 100%;
     }
     nav ul.show{
-        max-height: 25em;
+        max-height: 35em;
     }
     nav ul li{
         box-sizing: border-box;
@@ -290,5 +290,6 @@ li a:hover {
     .card2 {
         margin: 0 auto;
         margin-top: 40px;
+        margin-bottom: 40px;
     }
 }

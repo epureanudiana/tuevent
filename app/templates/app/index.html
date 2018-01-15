@@ -93,8 +93,10 @@
           <li><a href="{% url 'app:logout_page' %}">LOGOUT</a></li>
           <li><a href="{% url 'app:myprofile' %}">MY PROFILE</a></li>
           <li><a href="{% url 'app:contact' %}">CONTACT</a></li>
-          <li><a href="{% url 'app:share' %}">SHARE</a></li>
-              <li><a class="slide-section" href="#map">MAP</a></li>
+
+          <li><a href="{% url 'app:share2' %}">SHARE</a></li>
+          <li><a class="slide-section" href="#map">MAP</a></li>
+
           <li><a class="slide-section" href="#events">EVENTS</a></li>
           <li><a class="slide-section" href="#about">ABOUT</a></li>
           <li><a class="slide-section" href="#home">HOME</a></li>
@@ -129,57 +131,57 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="events move" id="events">
-      <h3 class="text-center">EVENTS</h3>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-lg-3">
-            <div id="lei" class="card card2" style="width: 15rem;">
-              <img class="card-img-top card-photo" src="{% static 'app/img/leisure.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Leisure</h4>
-                <p class="card-text">Sports? Music?<br> Dancing lessons?<br>You can find here any relaxing activity for you and your friends.</p>
-              </div>
-              <div class="card-body">
-                <a href="{% url 'app:leisure' %}" class="card-link bigger"><b>See events</b></a>
-              </div>
+    </div>
+  </section>
+  <section class="events move" id="events">
+    <h3 class="text-center">EVENTS</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div id="lei" class="card card2">
+            <img class="card-img-top card-photo" src="{% static 'app/img/leisure.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Leisure</h4>
+              <p class="card-text">Sports? Music?<br> Dancing lessons?<br>You can find here any kind of relaxing activity for you and your friends.</p>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'app:leisure' %}" class="card-link bigger"><b>See events</b></a>
             </div>
           </div>
-          <div class=" col col-md-3 col-lg-3 col-sm-12">
-            <div id="per" class="card card2" style="width: 15rem;">
-              <img class="card-img-top card-photo" src="{% static 'app/img/personal.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Personal</h4>
-                <p class="card-text">Here there are some more private events, such as house parties or movie nights, so check them out and join what you want.</p>
-              </div>
-              <div class="card-body">
-                <a href="{% url 'app:personal' %}" class="card-link bigger"><b>See events</b></a>
-              </div>
+        </div>
+        <div class=" col col-md-6 col-lg-3 col-sm-12">
+          <div id="per" class="card card2">
+            <img class="card-img-top card-photo" src="{% static 'app/img/personal.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Personal</h4>
+              <p class="card-text">Here there are some more private events, such as house parties or movie nights, so check them out and join what you want.</p>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'app:personal' %}" class="card-link bigger"><b>See events</b></a>
             </div>
           </div>
-          <div class="col-md-3 col-lg-3">
-            <div id="ed" class="card card2" style="width: 15rem;">
-              <img class="card-img-top card-photo" src="{% static 'app/img/educational.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Educational</h4>
-                <p class="card-text">Lunch lectures, trainings, seminars, any university-related event where you can consolidate your knowledge. </p>
-              </div>
-              <div class="card-body">
-                <a href="{% url 'app:educational' %}" class="card-link bigger"><b>See events</b></a>
-              </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div id="ed" class="card card2">
+            <img class="card-img-top card-photo" src="{% static 'app/img/educational.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Educational</h4>
+              <p class="card-text">Lunch lectures, trainings, seminars, any kind of university-related event where you can consolidate your knowledge. </p>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'app:educational' %}" class="card-link bigger"><b>See events</b></a>
             </div>
           </div>
-          <div class="col-md-3 col-lg-3">
-            <div id="prf" class="card card2" style="width: 15rem;">
-              <img class="card-img-top card-photo" src="{% static 'app/img/professional.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Professional</h4>
-                <p class="card-text">This is great for those in search for internships, summer schools, jobs. Offers of these kinds will be posted in this section.</p>
-              </div>
-              <div class="card-body">
-                <a href="{% url 'app:professional' %}" class="card-link bigger"><b>See events</b></a>
-              </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div id="prf" class="card card2">
+            <img class="card-img-top card-photo" src="{% static 'app/img/professional.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Professional</h4>
+              <p class="card-text">This is great for those in search for internships, summer schools, jobs. Offers of these kinds will be posted in this section.</p>
+            </div>
+            <div class="card-body">
+              <a href="{% url 'app:professional' %}" class="card-link bigger"><b>See events</b></a>
             </div>
           </div>
         </div>
@@ -187,25 +189,44 @@
     </section>
       <h3 class="text-center">MAP</h3>
     <section class="about move" id="map">
-      
+
       <div class="container text-center my-5 py-5">
 
           <div class="row col-md-12  text-center">
         <div  id="map">  </div>
-      </div>
-</div>
-    </section>
+    </div>
+  </section>
 
     <footer class="footer-distributed">
 
       <div class="footer-right">
 
+<<<<<<< HEAD
         <a href="#"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-twitter"></i></a>
         <a href="#"><i class="fa fa-linkedin"></i></a>
         <a href="#"><i class="fa fa-github"></i></a>
 
       </div>
+=======
+
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-github"></i></a>
+
+    </div>
+
+    <div class="footer-left">
+
+      <p class="footer-links">
+        <a class="slide-section" href="#home">Home</a> ·
+        <a class="slide-section" href="#about">About</a> ·
+        <a class="slide-section" href="#events">Events</a> ·
+        <a href="{% url 'app:share2' %}">Share</a> ·
+        <a href="{% url 'app:contact' %}">Contact</a>
+      </p>
+>>>>>>> origin/master
 
       <div class="footer-left">
 
@@ -216,7 +237,7 @@
           ·
           <a class="slide-section" href="#events">Events</a>
           ·
-          <a href="{% url 'app:share' %}">Share</a>
+  <a href="{% url 'app:share2' %}">Share</a>        
           ·
           <a href="{% url 'app:contact' %}">Contact</a>
         </p>

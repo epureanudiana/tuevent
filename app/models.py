@@ -11,7 +11,7 @@ class Event(models.Model):
         ('ed', 'Educational'),
         ('pr', 'Professional'),
     )
-    published_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    published_by = models.ForeignKey('auth.User', default=0, on_delete=models.CASCADE)
     event_name = models.CharField(max_length=200)
     event_location = models.CharField(max_length=250)
     position = GeopositionField(default='51.447,5.484')
