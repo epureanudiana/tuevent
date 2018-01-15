@@ -107,53 +107,121 @@ def leisure(request):
 
 def personal(request):
     form_class = OrderByForm
+    evform_class = EventForm
     latest_event_list = Event.objects.filter(event_category='pe')
     latest_event_list = latest_event_list.order_by('-event_date')
+    attendances = XattendsY.objects.filter(x_user=request.user)
+    attventsID = XattendsY.objects.values('y_event')
+    attvents = Event.objects.filter(id__in=attventsID)
+    print(attvents)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
+        evform = evform_class(data=request.POST)
 
         if form.is_valid():
             order = request.POST.get('orderby', '')
             latest_event_list = order_events(order, latest_event_list)
             form.fields['orderby'].value = order
             form_class = form
+
+        if evform.is_valid():
+            attend = request.POST.get('attendance', '')
+            evname = request.POST.get('ev_name', '')
+            evloca = request.POST.get('ev_location', '')
+            evdesc = request.POST.get('ev_description', '')
+            event  = Event.objects.get(event_name=evname, event_location=evloca, event_description=evdesc)
+            existence = XattendsY.objects.filter(x_user=request.user, y_event=event).exists()
+
+            if (attend == 'yes'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+                a = XattendsY()
+                a.x_user = request.user
+                a.y_event = event
+                a.save()
+            elif (attend == 'no'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+
 
     context = {'latest_event_list': latest_event_list[:50],
         'category': 'Personal',
         'css': 'app/personal.css',
         'js': 'app/javascript/personal.js',
-        'orderbyform': form_class}
+        'orderbyform': form_class,
+        'evform': evform_class,
+        'attendances': attendances,
+        'attvents': attvents}
     return render(request, 'app/events-base.html', context)
 
 def educational(request):
     form_class = OrderByForm
+    evform_class = EventForm
     latest_event_list = Event.objects.filter(event_category='ed')
     latest_event_list = latest_event_list.order_by('-event_date')
+    attendances = XattendsY.objects.filter(x_user=request.user)
+    attventsID = XattendsY.objects.values('y_event')
+    attvents = Event.objects.filter(id__in=attventsID)
+    print(attvents)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
+        evform = evform_class(data=request.POST)
 
         if form.is_valid():
             order = request.POST.get('orderby', '')
             latest_event_list = order_events(order, latest_event_list)
             form.fields['orderby'].value = order
             form_class = form
+
+        if evform.is_valid():
+            attend = request.POST.get('attendance', '')
+            evname = request.POST.get('ev_name', '')
+            evloca = request.POST.get('ev_location', '')
+            evdesc = request.POST.get('ev_description', '')
+            event  = Event.objects.get(event_name=evname, event_location=evloca, event_description=evdesc)
+            existence = XattendsY.objects.filter(x_user=request.user, y_event=event).exists()
+
+            if (attend == 'yes'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+                a = XattendsY()
+                a.x_user = request.user
+                a.y_event = event
+                a.save()
+            elif (attend == 'no'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+
 
     context = {'latest_event_list': latest_event_list[:50],
         'category': 'Educational',
         'css': 'app/educational.css',
         'js': 'app/javascript/educational.js',
-        'orderbyform': form_class}
+        'orderbyform': form_class,
+        'evform': evform_class,
+        'attendances': attendances,
+        'attvents': attvents}
     return render(request, 'app/events-base.html', context)
 
 def professional(request):
     form_class = OrderByForm
+    evform_class = EventForm
     latest_event_list = Event.objects.filter(event_category='pr')
     latest_event_list = latest_event_list.order_by('-event_date')
+    attendances = XattendsY.objects.filter(x_user=request.user)
+    attventsID = XattendsY.objects.values('y_event')
+    attvents = Event.objects.filter(id__in=attventsID)
+    print(attvents)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)
+        evform = evform_class(data=request.POST)
 
         if form.is_valid():
             order = request.POST.get('orderby', '')
@@ -161,11 +229,36 @@ def professional(request):
             form.fields['orderby'].value = order
             form_class = form
 
+        if evform.is_valid():
+            attend = request.POST.get('attendance', '')
+            evname = request.POST.get('ev_name', '')
+            evloca = request.POST.get('ev_location', '')
+            evdesc = request.POST.get('ev_description', '')
+            event  = Event.objects.get(event_name=evname, event_location=evloca, event_description=evdesc)
+            existence = XattendsY.objects.filter(x_user=request.user, y_event=event).exists()
+
+            if (attend == 'yes'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+                a = XattendsY()
+                a.x_user = request.user
+                a.y_event = event
+                a.save()
+            elif (attend == 'no'):
+                if existence:
+                    a = XattendsY.objects.get(x_user=request.user, y_event=event)
+                    a.delete();
+
+
     context = {'latest_event_list': latest_event_list[:50],
         'category': 'Professional',
         'css': 'app/professional.css',
         'js': 'app/javascript/professional.js',
-        'orderbyform': form_class}
+        'orderbyform': form_class,
+        'evform': evform_class,
+        'attendances': attendances,
+        'attvents': attvents}
     return render(request, 'app/events-base.html', context)
 
 def myprofile(request):
