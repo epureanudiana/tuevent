@@ -13,6 +13,71 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 
+          <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+          <meta charset="utf-8">
+          <style>
+
+             #map {
+               width: 100%;
+                height: 400px;
+                background-color: grey;
+             }
+
+            html, body {
+              height: 100%;
+              margin: 0;
+              padding:0;
+            }
+          </style>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHdDx6ji1n5Rvvyqa2Bm5_U-usL_i2sQ8"></script>
+          <script>
+
+            var map;
+            function initialize() {
+              var mapOptions = {
+                zoom:15,
+                center: {lat: 51.447, lng: 5.484}
+              };
+              map = new google.maps.Map(document.getElementById('map'),
+                  mapOptions);
+
+                  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                  var labelIndex = 0;
+
+
+                {% for mark in latest_event_list %}
+                  var pointer = new google.maps.LatLng({{mark.position.latitude}},{{mark.position.longitude}});
+                  var point = new google.maps.Marker({
+                    position: pointer,
+                    map: map,
+
+                  //  icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+
+                    animation: google.maps.Animation.DROP,
+                    label: labels[labelIndex++ % labels.length],
+                    title: '{{ mark.event_name }}, {{ mark.published_by }}, {{ mark.event_location }}',
+                  });
+
+
+                  var point_infowindow = new google.maps.InfoWindow({
+                //   content: '<p>Marker Location:' + point.getPosition() + '</p>'
+                 content: '<p> {{mark.event_name}} <br> Location: {{mark.event_location}} </p>'
+                  });
+
+                //google.maps.event.addListener(point, 'click', function() {
+                //    point_infowindow.open(map, point);
+                //  });
+
+
+                  {% endfor %}
+
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+          </script>
+
+
     </head>
     <body>
                <header>
@@ -75,6 +140,16 @@
                     {% endif %}
                 </div>
             </div>
+        </section>
+
+        <section class="about move" id="map">
+
+          <div class="container text-center my-5 py-5">
+
+              <div class="row col-md-12  text-center">
+            <div  id="map">  </div>
+          </div>
+    </div>
         </section>
 
         <footer class="footer-distributed">
